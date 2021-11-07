@@ -9,8 +9,11 @@ linkedin: https://www.linkedin.com
 github: https://github.com
 ---
 
-Tails Azimuth is a professor of atmospheric sciences at the Stanford AI Lab. His research interests includes complexity modelling of tailwinds, headwinds and crosswinds.
+滚滚长江东逝水 2，浪花淘尽英雄 3。是非成败转头空 4。青山依旧在 5，几度夕阳红 6。
+白发渔樵江渚上 7，惯看秋月春风 8。一壶浊酒喜相逢 9。古今多少事 10，都付笑谈中 11。
 
-He leads the clean energy group which develops 3D air pollution-climate models, writes differential equation solvers, and manufactures titanium plated air ballons. In his free time he bakes raspberry pi.
+滚滚长江东逝水 2，浪花淘尽英雄 3。是非成败转头空 4。青山依旧在 5，几度夕阳红 6。
+白发渔樵江渚上 7，惯看秋月春风 8。一壶浊酒喜相逢 9。古今多少事 10，都付笑谈中 11。
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+滚滚长江东逝水 2，浪花淘尽英雄 3。是非成败转头空 4。青山依旧在 5，几度夕阳红 6。
+白发渔樵江渚上 7，惯看秋月春风 8。一壶浊酒喜相逢 9。古今多少事 10，都付笑谈中 11。
