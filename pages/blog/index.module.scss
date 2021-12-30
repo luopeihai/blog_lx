@@ -1,0 +1,17 @@
+.h1{
+  color: #171717;
+    font-weight: 700;
+    font-size: 2.25em;
+    margin-top: 0;
+    margin-bottom: 0.8888889em;
+    line-height: 1.1111111;
+    letter-spacing: -0.025em;
+}
+.content{
+  grid-template-rows: auto 1fr;
+}
+
+.p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}

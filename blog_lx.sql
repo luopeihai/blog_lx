@@ -1,10 +1,41 @@
+DROP TABLE IF EXISTS `lx_admin`; #管理员
+CREATE TABLE IF NOT EXISTS `lx_admin`(
+   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID',
+   `uid` CHAR(255) NOT NULL DEFAULT '' COMMENT 'uid',
+   `username` varchar(30) DEFAULT NULL COMMENT '管理员账号', 
+   `password` varchar(100) NOT NULL COMMENT '密码', 
+   `user_uid` CHAR(255) DEFAULT NULL COMMENT '用户唯一识别码',
+   `created_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
+   `updated_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
+   `deleted_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '删除时间'
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+
 DROP TABLE IF EXISTS `lx_user`; #用户
 CREATE TABLE IF NOT EXISTS `lx_user`(
    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID',
    `uid` CHAR(255) NOT NULL DEFAULT '' COMMENT 'uid',
-   `name` varchar(30) DEFAULT NULL COMMENT '姓名', 
-   `admin_name` varchar(30) DEFAULT NULL COMMENT '管理员账号', 
-   `password` varchar(100) NOT NULL COMMENT '密码', 
+   `name` varchar(30) DEFAULT NULL COMMENT '管理员账号', 
+   `avater` CHAR(255) DEFAULT NULL COMMENT '头像',
+   `company` CHAR(255) DEFAULT NULL COMMENT '公司',
+   `position` CHAR(255) DEFAULT NULL COMMENT '职位',
+   `description` varchar(1000) DEFAULT NULL COMMENT '描述',
+   `created_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
+   `updated_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
+   `deleted_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '删除时间'
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+DROP TABLE IF EXISTS `lx_user_communication`; #社交
+CREATE TABLE IF NOT EXISTS `lx_user_communication`(
+   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID',
+   `uid` CHAR(255) NOT NULL DEFAULT '' COMMENT 'uid',
+   `show_type` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '展示类型', #0-微信  #1-电话  #2-QQ  #3-邮件
+   `icon` CHAR(500) DEFAULT NULL COMMENT '图标',
+   `name` CHAR(255) DEFAULT NULL COMMENT '名称',
+   `http` CHAR(500) DEFAULT NULL COMMENT '链接',
+   `pop_img` CHAR(500) DEFAULT NULL COMMENT '弹出图片',
+   `pop_text` CHAR(500) DEFAULT NULL COMMENT '弹出文字',
+   `user_uid` CHAR(255) DEFAULT NULL COMMENT '用户唯一识别码',
    `created_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
    `updated_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
    `deleted_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '删除时间'
@@ -20,6 +51,18 @@ CREATE TABLE IF NOT EXISTS `lx_works`(
    `cover` varchar(100) NOT NULL COMMENT '封面', 
    `pics` TEXT COMMENT '图片集', 
    `text_md` TEXT COMMENT '说明(富文本)', 
+   `tag_uids` varchar(1000) DEFAULT NULL  COMMENT '标签集合', 
+   `created_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
+   `updated_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
+   `deleted_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '删除时间'
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+
+DROP TABLE IF EXISTS `lx_tag`; #标签
+CREATE TABLE IF NOT EXISTS `lx_tag`(
+   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID',
+   `uid` CHAR(255) NOT NULL DEFAULT '' COMMENT 'uid',
+   `title` varchar(100) DEFAULT NULL COMMENT '标题', 
    `created_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
    `updated_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
    `deleted_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '删除时间'

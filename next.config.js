@@ -1,41 +1,36 @@
+const path = require('path')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const withAntdLess = require('next-plugin-antd-less')
 
-module.exports = withBundleAnalyzer({
-  reactStrictMode: true,
-  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-  eslint: {
-    dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
-  },
-  webpack: (config, { dev, isServer }) => {
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|mp4)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            publicPath: '/_next',
-            name: 'static/media/[name].[hash].[ext]',
-          },
-        },
-      ],
-    })
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    })
-
-    if (!dev && !isServer) {
-      // Replace React with Preact only in client production build
-      Object.assign(config.resolve.alias, {
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
+module.exports = withBundleAnalyzer(
+  withAntdLess({
+    modifyVars: { '@primary-color': '#000' }, // optional
+    lessVarsFilePath: './css/variables.less', // optional
+    lessVarsFilePathAppendToEndOfContent: false, // optional
+    // optional https://github.com/webpack-contrib/css-loader#object
+    cssLoaderOptions: {
+      // ...
+      mode: 'local',
+      localIdentName: '[path][name]__[local]--[hash:base64:5]', // invalid! for Unify getLocalIdent (Next.js / CRA), Cannot set it, but you can rewritten getLocalIdentFn
+      exportLocalsConvention: 'camelCase',
+      exportOnlyLocals: false,
+      // ...
+      getLocalIdent: (context, localIdentName, localName, options) => {
+        return 'whatever_random_class_name'
+      },
+    },
+    sassOptions: {
+      includePaths: [path.join(__dirname, 'styles')],
+    },
+    webpack: (config, { dev, isServer }) => {
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       })
-    }
 
-    return config
-  },
-})
+      return config
+    },
+  })
+)
