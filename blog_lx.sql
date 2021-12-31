@@ -19,11 +19,20 @@ CREATE TABLE IF NOT EXISTS `lx_user`(
    `avater` CHAR(255) DEFAULT NULL COMMENT '头像',
    `company` CHAR(255) DEFAULT NULL COMMENT '公司',
    `position` CHAR(255) DEFAULT NULL COMMENT '职位',
+   `wx` CHAR(255) DEFAULT NULL COMMENT '微信',
+   `tel` CHAR(255) DEFAULT NULL COMMENT '电话',
+   `qq` CHAR(255) DEFAULT NULL COMMENT 'QQ',
+   `email` CHAR(255) DEFAULT NULL COMMENT '邮箱',
    `description` varchar(1000) DEFAULT NULL COMMENT '描述',
    `created_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
    `updated_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
    `deleted_at` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '删除时间'
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+
+
+
+
 
 DROP TABLE IF EXISTS `lx_user_communication`; #社交
 CREATE TABLE IF NOT EXISTS `lx_user_communication`(

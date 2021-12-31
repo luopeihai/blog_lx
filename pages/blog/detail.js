@@ -1,6 +1,7 @@
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import styles from './index.module.scss'
 import Image from '@/components/image'
+import Link from '@/components/link'
 
 export default function Blog({}) {
   return (
@@ -14,7 +15,7 @@ export default function Blog({}) {
                 <div>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time datetime="2018-08-15T00:00:00.000Z">
+                    <time dateTime="2018-08-15T00:00:00.000Z">
                       Wednesday, August 15, 2018
                     </time>
                   </dd>
@@ -89,7 +90,7 @@ export default function Blog({}) {
                   </a>
                 </p>
                 <h2 id="introduction" className={styles.h1}>
-                  <a href="#introduction" aria-hidden="true" tabindex="-1">
+                  <a href="#introduction" aria-hidden="true" tabIndex="-1">
                     <span className="icon icon-link"></span>
                   </a>
                   Introduction
@@ -385,13 +386,13 @@ export default function Blog({}) {
                 </p>
               </div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <a
+                <Link
                   target="_blank"
                   rel="nofollow"
                   href="https://mobile.twitter.com/search?q=https%3A%2F%2Ftailwind-nextjs-starter-blog.vercel.app%2Fblog%2Fthe-time-machine"
                 >
                   Discuss on Twitter
-                </a>
+                </Link>
                 •
                 <a
                   target="_blank"
@@ -415,24 +416,24 @@ export default function Blog({}) {
                     标签
                   </h2>
                   <div className="flex flex-wrap">
-                    <a
+                    <Link
                       className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                       href="/tags/writings"
                     >
                       writings
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                       href="/tags/book"
                     >
                       book
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                       href="/tags/reflection"
                     >
                       reflection
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
@@ -441,7 +442,7 @@ export default function Blog({}) {
                       上一页
                     </h2>
                     <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                      <a href="/blog/pictures-of-canada">O Canada</a>
+                      <Link href="/blog/pictures-of-canada">O Canada</Link>
                     </div>
                   </div>
                   <div>
@@ -449,7 +450,9 @@ export default function Blog({}) {
                       下一页
                     </h2>
                     <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                      <a href="/blog/github-markdown-guide">Markdown Guide</a>
+                      <Link href="/blog/github-markdown-guide">
+                        Markdown Guide
+                      </Link>
                     </div>
                   </div>
                 </div>
