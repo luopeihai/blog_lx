@@ -1,11 +1,13 @@
-import type { NextPage } from 'next'
+import { NextPage } from 'next'
 import { PageSEO } from '@/components/seo'
 import siteMetadata from '@/data/siteMetadata'
-import projectsData from '@/data/projectsData'
 import Card from '@/components/card'
-import Image from 'next/image'
+import { get } from '@/lib/api'
+import { IRespones, IData } from '@/interface/work'
 
-const Home: NextPage = () => {
+interface IHomeProps extends IData {}
+
+const Home: NextPage<IHomeProps> = ({ items = [] }) => {
   return (
     <>
       <PageSEO
@@ -23,20 +25,24 @@ const Home: NextPage = () => {
         </div>
         <div className="container py-12">
           <div className="flex flex-wrap -m-4">
-            {projectsData.map((d) => (
-              <Card
-                key={d.title}
-                title={d.title}
-                description={d.description}
-                imgSrc={d.imgSrc}
-                href={d.href}
-              />
+            {items.map((item) => (
+              <Card key={item.uid} {...item} />
             ))}
           </div>
         </div>
       </div>
     </>
   )
+}
+
+Home.getInitialProps = async (ctx) => {
+  try {
+    const { data }: IRespones = await get('/work')
+    return data.isSuccess ? data.data : { items: [] }
+  } catch (error) {
+    console.log(error)
+  }
+  return { items: [] }
 }
 
 export default Home

@@ -64,37 +64,6 @@ export default function Blog({}) {
             </dl>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
               <div className="pt-10 pb-8 prose dark:prose-dark max-w-none">
-                <h1 id="the-time-machine-by-h-g-wells" className={styles.h1}>
-                  The Time Machine by H. G. Wells
-                </h1>
-                <p className={styles.p}>
-                  <em>Title</em>: The Time Machine
-                </p>
-                <p className={styles.p}>
-                  <em>Author</em>: H. G. Wells
-                </p>
-                <p className={styles.p}>
-                  <em>Subject</em>: Science Fiction
-                </p>
-                <p className={styles.p}>
-                  <em>Language</em>: English
-                </p>
-                <p className={styles.p}>
-                  <em>Source</em>:
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.gutenberg.org/ebooks/35"
-                  >
-                    Project Gutenberg
-                  </a>
-                </p>
-                <h2 id="introduction" className={styles.h1}>
-                  <a href="#introduction" aria-hidden="true" tabIndex="-1">
-                    <span className="icon icon-link"></span>
-                  </a>
-                  Introduction
-                </h2>
                 <p>
                   The Time Traveller (for so it will be convenient to speak of
                   him) was expounding a recondite matter to us. His pale grey
