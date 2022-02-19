@@ -2,22 +2,18 @@ import React from 'react'
 import Link from '../link'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
-import styles from './index.module.scss'
+import Logo from '../logo'
 import ThemeSwitch from '../themeSwitch'
-import { useTheme } from 'next-themes'
 import MobileNav from '../mobileNav'
 
 const Header = () => {
-  const { theme } = useTheme()
-
   return (
     <header className="flex items-center justify-between py-10">
       <div>
         <Link href="#" aria-label="Tailwind CSS Blog">
           <div className="flex items-center justify-between">
             <div className="mr-3">
-              <Logo className={theme === 'dark' ? styles.dark : styles.light} />
+              <Logo />
             </div>
             {typeof siteMetadata.headerTitle === 'string' ? (
               <div className="hidden h-6 text-2xl font-semibold sm:block">
