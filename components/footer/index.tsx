@@ -8,7 +8,7 @@ import { IRespones, IUser } from '@/interface/user'
 
 export default function Footer() {
   const [user, setUser] = useState<IUser | {}>({})
-  const content = <div>啦啦啦</div>
+
   useEffect(function () {
     ;(async function () {
       const { data }: IRespones = await get('/user')
@@ -17,7 +17,7 @@ export default function Footer() {
       }
     })()
   }, [])
-  console.log('data', user)
+
   return (
     <footer>
       <div className="flex flex-col items-center mt-16">
