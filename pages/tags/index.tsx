@@ -7,7 +7,6 @@ import { IRespones, IData } from '@/interface/tag'
 interface ITagProps extends IData {}
 
 const Tag: NextPage<ITagProps> = ({ items = [] }) => {
-  console.log('items', items)
   return (
     <>
       {/* <PageSEO
