@@ -25,12 +25,9 @@ const Tag: NextPage<ITagProps> = ({ items = [] }) => {
             {items.map((item, index) => (
               <div className="mt-2 mb-2 mr-5" key={index}>
                 <TagItem text={item.title} />
-                <Link
-                  href={`/tags/next`}
-                  className="-ml-2 text-sm font-semibold text-gray-600 uppercase dark:text-gray-300"
-                >
+                <span className="-ml-2 text-sm font-semibold text-gray-600 uppercase dark:text-gray-300">
                   ({item.work_total})
-                </Link>
+                </span>
               </div>
             ))}
           </div>

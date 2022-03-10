@@ -6,7 +6,7 @@ interface IProps {
 
 const Tag = ({ text }: IProps) => {
   return (
-    <Link href={`/tags/${text}`}>
+    <Link href={`/tags/next?tagName=${text}`}>
       <a className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
         {text}
       </a>
