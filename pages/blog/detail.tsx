@@ -73,17 +73,6 @@ const Blog: NextPage<IBlogProps> = (data) => {
                         <dd className="text-gray-900 dark:text-gray-100">
                           {user.nickname}
                         </dd>
-                        {/* <dt className="sr-only"></dt>
-                        <dd>
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href="https://twitter.com/Twitter"
-                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          >
-                            @Twitter
-                          </a>
-                        </dd> */}
                       </dl>
                     </li>
                   </ul>
@@ -118,7 +107,7 @@ const Blog: NextPage<IBlogProps> = (data) => {
                         <Link
                           key={index}
                           className="mr-3 text-sm font-medium  text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          href="/tags/writings"
+                          href={`/tags/next?tagName=${item.title}`}
                         >
                           {item.title}
                         </Link>

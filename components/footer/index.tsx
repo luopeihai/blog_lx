@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import Link from '../link'
-import siteMetadata from '@/data/siteMetadata'
 import SocialIcon, { EKind } from '@/components/social-icons'
 import { Popover } from 'antd'
 import { get } from '@/lib/api'

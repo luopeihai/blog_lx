@@ -35,6 +35,6 @@ export interface ISeachTagRes {
 }
 
 export interface ISeachTagData extends IPaginate {
-  items: IWorks[]
+  items?: IWorks[]
   tagName?: string
 }
