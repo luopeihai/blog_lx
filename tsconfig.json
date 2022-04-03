@@ -19,7 +19,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.js", "**/*.tsx", "lib/utils/files.js", "lib/mdx.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.js", "**/*.tsx", "lib/utils/files.js", "lib/mdx.js", "additional.d.ts"],
   "exclude": ["node_modules"]
 }
 
