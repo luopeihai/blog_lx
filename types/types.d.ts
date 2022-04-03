@@ -1,1 +1,1 @@
-declare const BASE_URL: string
+declare const NEXT_PUBLIC_BASE_URL: string

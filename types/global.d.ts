@@ -11,4 +11,3 @@ declare module '*.module.less' {
   export default classes
 }
 
-declare const BASE_URL: string;

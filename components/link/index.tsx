@@ -1,26 +1,16 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
+import React from 'react'
 import Link from 'next/link'
 interface IProps {
   href: string
+  ariaLabel?: string
 }
 
-const CustomLink = ({ href, ...rest }: IProps) => {
-  const isInternalLink = href && href.startsWith('/')
-  const isAnchorLink = href && href.startsWith('#')
-
-  if (isInternalLink) {
-    return (
-      <Link href={href}>
-        <a {...rest} />
-      </Link>
-    )
-  }
-
-  if (isAnchorLink) {
-    return <a href={href} {...rest} />
-  }
-
-  return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
+const CustomLink: React.FC<IProps> = ({ href, ariaLabel, children }) => {
+  return (
+    <Link href={href} aria-label={ariaLabel}>
+      <a href={href}>{children}</a>
+    </Link>
+  )
 }
 
 export default CustomLink
