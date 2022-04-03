@@ -1,5 +1,5 @@
 export const config: {
   [key: string]: string
 } = {
-  NEXT_PUBLIC_BASE_URL,
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || '',
 }
