@@ -1,4 +1,4 @@
-import Image from '../image'
+import Image from 'next/image'
 import Link from '../link'
 import { IWorks } from '@/interface/work'
 

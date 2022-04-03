@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Image from '@/components/image'
+import Image from 'next/image'
 import { get } from '@/lib/api'
 import { IRespones, IUser } from '@/interface/user'
 interface IProps {

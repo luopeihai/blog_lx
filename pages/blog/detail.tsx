@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { NextPage } from 'next'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import styles from './index.module.scss'
-import Image from '@/components/image'
+import Image from 'next/image'
+
 import Link from '@/components/link'
 import { get } from '@/lib/api'
 import { formatDate } from '@/util/formatDate'
@@ -55,14 +56,14 @@ const Blog: NextPage<IBlogProps> = (data) => {
           <div
             className={`pb-8 divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 ${styles.content}`}
           >
-            {!!user && (
+            {!!user?.avatar && (
               <dl className="pt-6 pb-10 xl:pt-11 xl:border-b xl:border-gray-200 xl:dark:border-gray-700">
                 <dt className="sr-only">Authors</dt>
                 <dd>
                   <ul className="flex justify-center space-x-8 xl:block sm:space-x-12 xl:space-x-0 xl:space-y-8">
                     <li className="flex items-center space-x-2">
                       <Image
-                        src={user?.avatar}
+                        src={user.avatar}
                         width="38px"
                         height="38px"
                         alt="avatar"
