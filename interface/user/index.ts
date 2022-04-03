@@ -14,14 +14,14 @@ export interface IDataRes {
 }
 
 export interface IUser {
-  username: string
-  nickname: string
-  avatar: string
-  email: string
-  sign: string
-  introduce: string
-  tel: string
-  qq: string
-  wx: string
-  create_time: string
+  username?: string
+  nickname?: string
+  avatar?: string
+  email?: string
+  sign?: string
+  introduce?: string
+  tel?: string
+  qq?: string
+  wx?: string
+  create_time?: string
 }

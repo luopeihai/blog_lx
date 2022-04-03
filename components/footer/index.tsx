@@ -6,7 +6,11 @@ import { get } from '@/lib/api'
 import { IRespones, IUser } from '@/interface/user'
 
 export default function Footer() {
-  const [user, setUser] = useState<IUser | {}>({})
+  const [user, setUser] = useState<IUser>({
+    wx: '',
+    qq: '',
+    email: '',
+  })
 
   useEffect(function () {
     ;(async function () {
