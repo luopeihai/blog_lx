@@ -6,7 +6,7 @@
     "build": "env-cmd -f .env.development  next build",
     "build:pro": "env-cmd -f .env.production next build",
     "start": "env-cmd -f .env.development next start",
-    "start:pro": "env-cmd -f .env.production next start",
+    "start:pro": "env-cmd -f .env.production next start  -p 3001",
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true next build"
   },
