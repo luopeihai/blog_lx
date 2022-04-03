@@ -36,7 +36,9 @@ const About: NextPage<IProps> = ({ user }) => {
             <div className="flex pt-6 space-x-3"></div>
           </div>
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
-            {user?.introduce && <p>{user.introduce}</p>}
+            {user?.introduce && (
+              <div dangerouslySetInnerHTML={{ __html: user.introduce }} />
+            )}
           </div>
         </div>
       </div>
