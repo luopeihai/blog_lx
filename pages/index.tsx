@@ -38,6 +38,7 @@ const Home: NextPage<IHomeProps> = ({ items = [] }) => {
 Home.getInitialProps = async (ctx) => {
   try {
     const { data }: IRespones = await get('/work')
+
     return data.isSuccess ? data.data : { items: [] }
   } catch (error) {
     console.log(error)
