@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: '12'
       - run: npm install
-      - run: npm run build
+      - run: npm run build:fat
       - run: tar -zcvf release.tgz .next ecosystem.config.js package.json public
 
      # 发布 Release
