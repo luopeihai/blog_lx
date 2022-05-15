@@ -30,7 +30,7 @@ jobs:
           node-version: '12'
       - run: npm install
       - run: npm run build
-      - run: tar -zcvf release.tgz .next ecosystem.config.js package.json
+      - run: tar -zcvf release.tgz .next ecosystem.config.js package.json public
 
      # 发布 Release
       - name: Create Release
