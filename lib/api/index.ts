@@ -1,7 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { config } from '@/config'
 const axiosConfig: AxiosRequestConfig = {
-  baseURL: config.baseUrl + 'api/v1',
+  baseURL:
+    (typeof window !== 'undefined' ? config.baseUrl : config.serverBaseUrl) +
+    'api/v1',
   //timeout: 5 * 1000, // 请求超时时间设置
   // crossDomain: true,
   withCredentials: false, // Check cross-site Access-Control

@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "env-cmd -f .env.production next build",
+    "build:fat": "env-cmd -f .env.fat next build",
+    "build:production": "env-cmd -f .env.production next build",
     "start": "next start -p $PORT",
     "server:fat": "pm2 start ecosystem.config.js",
     "server:pro": "npm run build && pm2 start pro.ecosystem.config.js",
