@@ -3,11 +3,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "env-cmd -f .env.development  next build",
-    "build:pro": "env-cmd -f .env.production next build",
+    "build": "env-cmd -f .env.production next build",
     "start": "next start -p $PORT",
-    "server:fat": "pm2 restart ecosystem.config.js",
-    "server:pro": "npm run build:pro && pm2 start pro.ecosystem.config.js",
+    "server:fat": "pm2 start ecosystem.config.js",
+    "server:pro": "npm run build && pm2 start pro.ecosystem.config.js",
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true next build"
   },
