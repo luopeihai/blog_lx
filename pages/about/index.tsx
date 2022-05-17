@@ -7,6 +7,7 @@ interface IProps {
 }
 
 const About: NextPage<IProps> = ({ user }) => {
+  console.log('user?.avatar')
   return (
     <main className="mb-auto">
       <div className="divide-y">

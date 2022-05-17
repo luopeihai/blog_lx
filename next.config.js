@@ -35,7 +35,7 @@ module.exports = withBundleAnalyzer(
         return config
       },
       images: {
-        domains: ['localhost'],
+        domains: ['localhost', '124.221.45.254'],
       },
     })
   )
