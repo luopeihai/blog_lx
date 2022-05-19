@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NextPage } from 'next'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { PageSEO } from '@/components/seo'
@@ -10,10 +10,11 @@ import { get } from '@/lib/api'
 import { formatDate } from '@/util/formatDate'
 import { IDetailRespones, IDetailData } from '@/interface/work'
 import { IRespones, IUser } from '@/interface/user'
+import { constants } from 'zlib'
 
 interface IBlogProps extends IDetailData {}
 
-const Blog: NextPage<IBlogProps> = (data) => {
+const Blog: React.FC<IBlogProps> = (data) => {
   const { work, prevWork, nextWork } = data
   const [user, setUser] = useState<IUser>()
 
@@ -25,7 +26,6 @@ const Blog: NextPage<IBlogProps> = (data) => {
       }
     })()
   }, [])
-
 
   const description = (work?.tags || []).map((item) => item.title).join(' ')
 
@@ -165,15 +165,34 @@ const Blog: NextPage<IBlogProps> = (data) => {
   )
 }
 
-Blog.getInitialProps = async ({ query }) => {
-  try {
-    const { id } = query
-    const { data }: IDetailRespones = await get(`/work/${id}`)
-    return data.isSuccess ? data.data : {}
-  } catch (error) {
-    console.log(error)
-  }
-  return {}
-}
+// export async function getStaticProps({params}) {
+//   const { data }: IDetailRespones = await get(`/work/${params.wid}`)
+//   const work = data.isSuccess ? data.data : {}
+//   return {
+//     props: {
+//       data:work
+//     },
+//   }
+// }
 
+// export async function getStaticPaths() {
+//   const { data } = await get('/work/all')
+//   const works = data.isSuccess ? data.data : []
+//   return {
+//     paths: works.map((item) => ({params: {wid: item.uid}})),
+//     fallback: false,
+//   }
+// }
+
+// export async function getServerSideProps(context) {
+//   let res = {}
+//   try {
+//     const { wid } =context.query
+//     const { data }: IDetailRespones = await get(`/work/${wid}`)
+//     res = data.isSuccess ? data.data : {}
+//   } catch (error) {
+//     console.log(error)
+//   }
+//   return { props: { data: res } }
+// }
 export default Blog
