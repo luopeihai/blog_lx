@@ -18,56 +18,57 @@ const CommonSEO = ({
   title,
   description,
   ogType,
-  ogImage,
-  twImage,
-}: ICommonSEO) => {
+}: // ogImage,
+// twImage,
+ICommonSEO) => {
   const router = useRouter()
+
   return (
     <Head>
-      <title>{title}</title>
+      <title>vates博客-{title}</title>
       <meta name="robots" content="follow, index" />
-      <meta name="description" content={description} />
-      <meta
+      {description && <meta name="description" content={description} />}
+      {/* <meta
         property="og:url"
         content={`${siteMetadata.siteUrl}${router.asPath}`}
-      />
+      /> */}
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={siteMetadata.title} />
-      <meta property="og:description" content={description} />
+      {description && <meta property="og:description" content={description} />}
       <meta property="og:title" content={title} />
-      {Array.isArray(ogImage) ? (
+      {/* {Array.isArray(ogImage) ? (
         ogImage.map(({ url }) => (
           <meta property="og:image" content={url} key={url} />
         ))
       ) : (
         <meta property="og:image" content={ogImage} key={ogImage} />
-      )}
+      )} */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={siteMetadata.twitter} />
+      {/* <meta name="twitter:site" content={siteMetadata.twitter} /> */}
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={twImage} />
+      {description && <meta name="twitter:description" content={description} />}
+      {/* <meta name="twitter:image" content={twImage} /> */}
     </Head>
   )
 }
 
 export const PageSEO = ({ title, description }: ICommonSEO) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  // const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  // const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
   return (
     <CommonSEO
       title={title}
       description={description}
       ogType="website"
-      ogImage={ogImageUrl}
-      twImage={twImageUrl}
+      // ogImage={ogImageUrl}
+      // twImage={twImageUrl}
     />
   )
 }
 
 export const TagSEO = ({ title, description }: ICommonSEO) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  // const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  // const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
   const router = useRouter()
   return (
     <>
@@ -75,17 +76,17 @@ export const TagSEO = ({ title, description }: ICommonSEO) => {
         title={title}
         description={description}
         ogType="website"
-        ogImage={ogImageUrl}
-        twImage={twImageUrl}
+        // ogImage={ogImageUrl}
+        // twImage={twImageUrl}
       />
-      <Head>
+      {/* <Head>
         <link
           rel="alternate"
           type="application/rss+xml"
           title={`${description} - RSS feed`}
           href={`${siteMetadata.siteUrl}${router.asPath}/feed.xml`}
         />
-      </Head>
+      </Head> */}
     </>
   )
 }

@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import Link from '@/components/link'
 import Tag from '@/components/tag'
 import Pagination from '@/components/pagination'
+import { PageSEO } from '@/components/seo'
 import { useState, useEffect } from 'react'
 import { get } from '@/lib/api'
 import { formatDate } from '@/util/formatDate'
@@ -30,8 +31,11 @@ const SeachTag: NextPage<ISeachTagData> = ({
     Router.push(tagName ? `/tags/next?tagName=${tagName}` : `/tags/next`)
   }, 1000)
 
+  const description = items.map((item) => item.title).join(' ')
+
   return (
     <>
+      <PageSEO title={tagName} description={description} />
       <div className="divide-y">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
@@ -68,7 +72,7 @@ const SeachTag: NextPage<ISeachTagData> = ({
               <li key={index} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                   <dl>
-                    <dt className="sr-only">{item.title}</dt>
+                    <dt className="sr-on">{item.title}</dt>
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                       <time dateTime={'August 7, 2021'}>
                         {formatDate('yyyy-MM-dd', item.create_time)}
@@ -77,11 +81,8 @@ const SeachTag: NextPage<ISeachTagData> = ({
                   </dl>
                   <div className="space-y-3 xl:col-span-3">
                     <div>
-                      <h3 className="text-2xl font-bold leading-8 tracking-tight">
-                        <Link
-                          href={`/blog/detail?id=${item.uid}`}
-                          className="text-gray-900 dark:text-gray-100"
-                        >
+                      <h3 className="text-2xl font-bold leading-8 tracking-tight text-gray-900 dark:text-gray-100">
+                        <Link href={`/blog/detail?id=${item.uid}`}>
                           {item.title}
                         </Link>
                       </h3>
