@@ -10,7 +10,7 @@ interface IProps {
 const About: NextPage<IProps> = ({ user }) => {
   return (
     <>
-      <PageSEO title="关于我" description={user?.introduce || user?.sign} />
+      <PageSEO title="关于我" description={user?.introduce || '一名ui设计师'} />
       <main className="mb-auto">
         <div className="divide-y">
           <div className="pt-6 pb-8 space-y-2 md:space-y-5">
@@ -24,7 +24,7 @@ const About: NextPage<IProps> = ({ user }) => {
                 width={150}
                 height={150}
                 alt="avatar"
-                src={user?.avatar}
+                src={user?.avatar || ''}
                 className={`rounded-full`}
               />
               <h3 className="pt-4 pb-2 text-2xl font-bold dark:text-gray-100 leading-8 tracking-tight">

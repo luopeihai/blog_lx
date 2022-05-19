@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "build:dev": "env-cmd -f .env.development next build",
     "build:fat": "env-cmd -f .env.fat next build",
     "build:production": "env-cmd -f .env.production next build",
     "start": "next start -p $PORT",

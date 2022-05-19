@@ -44,3 +44,7 @@ export interface IWorks {
   create_time: string
   tags?: ITags[]
 }
+
+export interface IGetStaticPropsParams {
+  params: { wid: string }
+}

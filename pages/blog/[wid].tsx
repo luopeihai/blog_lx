@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { NextPage } from 'next'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { PageSEO } from '@/components/seo'
 import styles from './index.module.scss'
@@ -8,9 +7,13 @@ import Image from 'next/image'
 import Link from '@/components/link'
 import { get } from '@/lib/api'
 import { formatDate } from '@/util/formatDate'
-import { IDetailRespones, IDetailData } from '@/interface/work'
+import {
+  IDetailRespones,
+  IDetailData,
+  IWorks,
+  IGetStaticPropsParams,
+} from '@/interface/work'
 import { IRespones, IUser } from '@/interface/user'
-import { constants } from 'zlib'
 
 interface IBlogProps extends IDetailData {}
 
@@ -31,7 +34,7 @@ const Blog: React.FC<IBlogProps> = (data) => {
 
   return (
     <>
-      <PageSEO title={work?.title} description={description} />
+      <PageSEO title={work?.title || '作品详情'} description={description} />
       <div className="max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0">
         <ScrollTopAndComment />
         <article>
@@ -165,24 +168,25 @@ const Blog: React.FC<IBlogProps> = (data) => {
   )
 }
 
-// export async function getStaticProps({params}) {
-//   const { data }: IDetailRespones = await get(`/work/${params.wid}`)
-//   const work = data.isSuccess ? data.data : {}
-//   return {
-//     props: {
-//       data:work
-//     },
-//   }
-// }
+export async function getStaticProps({ params }: IGetStaticPropsParams) {
+  const { data }: IDetailRespones = await get(`/work/${params.wid}`)
+  const work = data.isSuccess ? data.data : {}
+  return {
+    props: {
+      data: work,
+    },
+  }
+}
 
-// export async function getStaticPaths() {
-//   const { data } = await get('/work/all')
-//   const works = data.isSuccess ? data.data : []
-//   return {
-//     paths: works.map((item) => ({params: {wid: item.uid}})),
-//     fallback: false,
-//   }
-// }
+export async function getStaticPaths() {
+  const { data } = await get('/work/all/records')
+  const works: IWorks[] = data.isSuccess ? data.data : []
+
+  return {
+    paths: works.map((item) => ({ params: { wid: item.uid } })),
+    fallback: false,
+  }
+}
 
 // export async function getServerSideProps(context) {
 //   let res = {}
