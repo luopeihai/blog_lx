@@ -21,6 +21,8 @@ const Blog: React.FC<IBlogProps> = (data) => {
   const { work, prevWork, nextWork } = data
   const [user, setUser] = useState<IUser>()
 
+  console.log('data', data)
+
   useEffect(function () {
     ;(async function () {
       const { data }: IRespones = await get('/user')
@@ -187,16 +189,4 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
-
-// export async function getServerSideProps(context) {
-//   let res = {}
-//   try {
-//     const { wid } =context.query
-//     const { data }: IDetailRespones = await get(`/work/${wid}`)
-//     res = data.isSuccess ? data.data : {}
-//   } catch (error) {
-//     console.log(error)
-//   }
-//   return { props: { data: res } }
-// }
 export default Blog
