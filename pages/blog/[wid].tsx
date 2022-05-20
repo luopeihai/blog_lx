@@ -17,11 +17,9 @@ import styles from './index.module.scss'
 
 interface IBlogProps extends IDetailData {}
 
-const Blog: React.FC<IBlogProps> = (data) => {
-  const { work, prevWork, nextWork } = data
+const Blog: React.FC<IBlogProps> = ({ work, prevWork, nextWork }) => {
+  
   const [user, setUser] = useState<IUser>()
-
-  console.log('data', data)
 
   useEffect(function () {
     ;(async function () {
@@ -175,7 +173,7 @@ export async function getStaticProps({ params }: IGetStaticPropsParams) {
   const work = data.isSuccess ? data.data : {}
   return {
     props: {
-      data: work,
+      ...work,
     },
   }
 }
