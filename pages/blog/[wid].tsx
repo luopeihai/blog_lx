@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 import Link from '@/components/link'
 import { get } from '@/lib/api'
+import { nodeGet } from '@/lib/api/node'
 import { formatDate } from '@/util/formatDate'
 import {
   IDetailRespones,
@@ -179,7 +180,7 @@ export async function getStaticProps({ params }: IGetStaticPropsParams) {
 }
 
 export async function getStaticPaths() {
-  const { data } = await get('/work/all/records')
+  const { data } = await nodeGet('/work/all')
   const works: IWorks[] = data.isSuccess ? data.data : []
 
   return {

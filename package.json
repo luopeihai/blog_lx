@@ -8,7 +8,7 @@
     "build:production": "env-cmd -f .env.production next build",
     "start": "next start -p $PORT",
     "server:fat": "pm2 start ecosystem.config.js",
-    "server:pro": "npm run build && pm2 start pro.ecosystem.config.js",
+    "server:pro": "npm run build:production && pm2 start pro.ecosystem.config.js",
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true next build"
   },
