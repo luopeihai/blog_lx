@@ -170,7 +170,7 @@ const Blog: React.FC<IBlogProps> = (data) => {
 }
 
 export async function getStaticProps({ params }: IGetStaticPropsParams) {
-  const { data }: IDetailRespones = await get(`/work/${params.wid}`)
+  const { data }: IDetailRespones = await get(`/work/datail/${params.wid}`)
   const work = data.isSuccess ? data.data : {}
   return {
     props: {
