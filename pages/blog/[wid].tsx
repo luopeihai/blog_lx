@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { PageSEO } from '@/components/seo'
-import styles from './index.module.scss'
 import Image from 'next/image'
-
 import Link from '@/components/link'
 import { get } from '@/lib/api'
 import { nodeGet } from '@/lib/api/node'
@@ -15,6 +13,7 @@ import {
   IGetStaticPropsParams,
 } from '@/interface/work'
 import { IRespones, IUser } from '@/interface/user'
+import styles from './index.module.scss'
 
 interface IBlogProps extends IDetailData {}
 
@@ -170,7 +169,7 @@ const Blog: React.FC<IBlogProps> = (data) => {
 }
 
 export async function getStaticProps({ params }: IGetStaticPropsParams) {
-  const { data }: IDetailRespones = await get(`/work/datail/${params.wid}`)
+  const { data }: IDetailRespones = await nodeGet(`/work/detail/${params.wid}`)
   const work = data.isSuccess ? data.data : {}
   return {
     props: {
