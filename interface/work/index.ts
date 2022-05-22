@@ -1,6 +1,7 @@
 import { IPaginate } from '../common'
 import { AxiosResponse } from 'axios'
 import { ITags } from '../tag'
+import { IUser } from '../user'
 /**
  * 返回结构通用信息
  */
@@ -32,6 +33,7 @@ export interface IDetailData {
   work?: IWorks
   prevWork?: IWorks
   nextWork?: IWorks
+  user?: IUser
 }
 
 export interface IWorks {

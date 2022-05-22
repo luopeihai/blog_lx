@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { PageSEO } from '@/components/seo'
 import Image from 'next/image'
 import Link from '@/components/link'
-import { get } from '@/lib/api'
 import { nodeGet } from '@/lib/api/node'
 import { formatDate } from '@/util/formatDate'
 import {
@@ -12,24 +11,11 @@ import {
   IWorks,
   IGetStaticPropsParams,
 } from '@/interface/work'
-import { IRespones, IUser } from '@/interface/user'
 import styles from './index.module.scss'
 
 interface IBlogProps extends IDetailData {}
 
-const Blog: React.FC<IBlogProps> = ({ work, prevWork, nextWork }) => {
-  
-  const [user, setUser] = useState<IUser>()
-
-  useEffect(function () {
-    ;(async function () {
-      const { data }: IRespones = await get('/user')
-      if (data.isSuccess) {
-        setUser(data.data)
-      }
-    })()
-  }, [])
-
+const Blog: React.FC<IBlogProps> = ({ work, prevWork, nextWork, user }) => {
   const description = (work?.tags || []).map((item) => item.title).join(' ')
 
   return (
@@ -65,7 +51,7 @@ const Blog: React.FC<IBlogProps> = ({ work, prevWork, nextWork }) => {
             <div
               className={`pb-8 divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 ${styles.content}`}
             >
-              {!!user?.avatar && (
+              {user?.avatar && (
                 <dl className="pt-6 pb-10 xl:pt-11 xl:border-b xl:border-gray-200 xl:dark:border-gray-700">
                   <dt className="sr-only">Authors</dt>
                   <dd>
@@ -131,7 +117,7 @@ const Blog: React.FC<IBlogProps> = ({ work, prevWork, nextWork }) => {
                           上一页
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/blog/detail?id=${prevWork.uid}`}>
+                          <Link href={`/blog/${prevWork.uid}`}>
                             {prevWork.title}
                           </Link>
                         </div>
@@ -143,7 +129,7 @@ const Blog: React.FC<IBlogProps> = ({ work, prevWork, nextWork }) => {
                           下一页
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/blog/detail?id=${nextWork.uid}`}>
+                          <Link href={`/blog/${nextWork.uid}`}>
                             {nextWork.title}
                           </Link>
                         </div>
@@ -171,6 +157,7 @@ const Blog: React.FC<IBlogProps> = ({ work, prevWork, nextWork }) => {
 export async function getStaticProps({ params }: IGetStaticPropsParams) {
   const { data }: IDetailRespones = await nodeGet(`/work/detail/${params.wid}`)
   const work = data.isSuccess ? data.data : {}
+
   return {
     props: {
       ...work,
