@@ -28,14 +28,21 @@ module.exports = withBundleAnalyzer(
       },
       webpack: (config, { dev, isServer }) => {
         config.module.rules.push({
-          test: /\.svg$/,
-          use: ['@svgr/webpack'],
+          test: /\.(woff|woff2|eot|ttf|svg)$/,
+          loader: 'url-loader?limit=100000',
         })
 
         return config
       },
       images: {
         domains: ['localhost', '124.221.45.254'],
+      },
+      typescript: {
+        // !! WARN !!
+        // Dangerously allow production builds to successfully complete even if
+        // your project has type errors.
+        // !! WARN !!
+        ignoreBuildErrors: true,
       },
     })
   )

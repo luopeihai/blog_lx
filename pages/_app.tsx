@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
 import 'antd/dist/antd.css'
 import '@/css/tailwind.css'
+import '@/css/icons.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

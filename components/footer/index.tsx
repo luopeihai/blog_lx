@@ -2,25 +2,13 @@ import { useState, useEffect } from 'react'
 import Link from '../link'
 import SocialIcon, { EKind } from '@/components/social-icons'
 import { Popover } from 'antd'
-import { get } from '@/lib/api'
-import { IRespones, IUser } from '@/interface/user'
+import { IUser } from '@/interface/user'
 
-export default function Footer() {
-  const [user, setUser] = useState<IUser>({
-    wx: '',
-    qq: '',
-    email: '',
-  })
+interface IProps {
+  user: IUser
+}
 
-  useEffect(function () {
-    ;(async function () {
-      const { data }: IRespones = await get('/user')
-      if (data.isSuccess) {
-        setUser(data.data)
-      }
-    })()
-  }, [])
-
+export default function Footer({ user }: IProps) {
   return (
     <footer>
       <div className="flex flex-col items-center mt-16">
