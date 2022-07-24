@@ -43,7 +43,7 @@ module.exports = withBundleAnalyzer(
         return config
       },
       images: {
-        domains: ['localhost', 'test-cms.vatesdesigner.com'],
+        domains: ['localhost', '*.vatesdesigner.com'],
       },
       typescript: {
         // !! WARN !!
